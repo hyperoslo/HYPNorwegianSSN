@@ -22,6 +22,10 @@
 
 - (NSUInteger)age
 {
+    if ([self.SSN length] != 11) {
+        NSLog(@"%s:%d -> %@",  __FUNCTION__, __LINE__, @"Unable to calculate age because SSN is not long enough");
+    }
+
     NSString *dateCharactersString = [self.SSN substringToIndex:6];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"DDMMYY";
