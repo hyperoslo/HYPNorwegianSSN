@@ -48,7 +48,7 @@
 - (BOOL)isFemale
 {
     NSInteger personalNumber = [self.personalNumberString integerValue];
-    return (personalNumber % 2);
+    return !(personalNumber % 2);
 }
 
 - (BOOL)isMale

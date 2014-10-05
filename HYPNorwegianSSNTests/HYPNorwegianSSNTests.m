@@ -46,12 +46,13 @@ static NSString *HYPBaseSSN = @"03129041853";
 
 - (void)testIfFemale
 {
-    XCTAssert(!self.SSN.isFemale, @"Is not Female");
+    XCTAssert(self.SSN.isFemale, @"Is Female");
 }
 
 - (void)testIfMale
 {
-    XCTAssert(self.SSN.isMale, @"Is male");
+    XCTAssert(!self.SSN.isMale, @"Is not Male");
+}
 }
 
 @end
