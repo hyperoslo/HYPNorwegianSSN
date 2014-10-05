@@ -6,20 +6,92 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BD90227619E1B91B007967E6 /* HYPNorwegianSSNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD90227519E1B91B007967E6 /* HYPNorwegianSSNTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BD90227019E1B91B007967E6 /* HYPNorwegianSSNTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYPNorwegianSSNTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD90227419E1B91B007967E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD90227519E1B91B007967E6 /* HYPNorwegianSSNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPNorwegianSSNTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD90226D19E1B91B007967E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		BD83E01819E1B7A200FFFE7A = {
 			isa = PBXGroup;
 			children = (
+				BD90227219E1B91B007967E6 /* HYPNorwegianSSNTests */,
+				BD90227119E1B91B007967E6 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
+		BD90227119E1B91B007967E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD90227019E1B91B007967E6 /* HYPNorwegianSSNTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD90227219E1B91B007967E6 /* HYPNorwegianSSNTests */ = {
+			isa = PBXGroup;
+			children = (
+				BD90227519E1B91B007967E6 /* HYPNorwegianSSNTests.m */,
+				BD90227319E1B91B007967E6 /* Supporting Files */,
+			);
+			path = HYPNorwegianSSNTests;
+			sourceTree = "<group>";
+		};
+		BD90227319E1B91B007967E6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD90227419E1B91B007967E6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD90226F19E1B91B007967E6 /* HYPNorwegianSSNTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD90227919E1B91B007967E6 /* Build configuration list for PBXNativeTarget "HYPNorwegianSSNTests" */;
+			buildPhases = (
+				BD90226C19E1B91B007967E6 /* Sources */,
+				BD90226D19E1B91B007967E6 /* Frameworks */,
+				BD90226E19E1B91B007967E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HYPNorwegianSSNTests;
+			productName = HYPNorwegianSSNTests;
+			productReference = BD90227019E1B91B007967E6 /* HYPNorwegianSSNTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		BD83E01919E1B7A200FFFE7A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
+				TargetAttributes = {
+					BD90226F19E1B91B007967E6 = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+				};
 			};
 			buildConfigurationList = BD83E01C19E1B7A200FFFE7A /* Build configuration list for PBXProject "HYPNorwegianSSN" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -29,12 +101,35 @@
 				en,
 			);
 			mainGroup = BD83E01819E1B7A200FFFE7A;
+			productRefGroup = BD90227119E1B91B007967E6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				BD90226F19E1B91B007967E6 /* HYPNorwegianSSNTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BD90226E19E1B91B007967E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD90226C19E1B91B007967E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD90227619E1B91B007967E6 /* HYPNorwegianSSNTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		BD83E01D19E1B7A200FFFE7A /* Debug */ = {
@@ -49,6 +144,96 @@
 			};
 			name = Release;
 		};
+		BD90227719E1B91B007967E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = HYPNorwegianSSNTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BD90227819E1B91B007967E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = HYPNorwegianSSNTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -60,6 +245,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		BD90227919E1B91B007967E6 /* Build configuration list for PBXNativeTarget "HYPNorwegianSSNTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD90227719E1B91B007967E6 /* Debug */,
+				BD90227819E1B91B007967E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
