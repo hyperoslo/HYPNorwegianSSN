@@ -12,30 +12,28 @@
 
 @interface HYPNorwegianSSNTests : XCTestCase
 
+@property (nonatomic, strong) HYPNorwegianSSN *ssn;
+
 @end
 
 @implementation HYPNorwegianSSNTests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+- (void)tearDown
+{
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
-}
+- (void)testAge
+{
+    self.ssn = [[HYPNorwegianSSN alloc] initWithSSN:@"03129041853"];
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    XCTAssert((self.ssn.age > 0), @"Age is higher than zero");
+
 }
 
 @end
