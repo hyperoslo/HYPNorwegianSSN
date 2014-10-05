@@ -33,7 +33,6 @@
     self.ssn = [[HYPNorwegianSSN alloc] initWithSSN:@"03129041853"];
 
     XCTAssert((self.ssn.age > 0), @"Age is higher than zero");
-
 }
 
 @end

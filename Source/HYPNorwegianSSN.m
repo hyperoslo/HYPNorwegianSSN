@@ -22,7 +22,19 @@
 
 - (NSUInteger)age
 {
-    return 0;
+    NSString *dateCharactersString = [self.SSN substringToIndex:6];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"DDMMYY";
+    NSDate *birthday = [formatter dateFromString:dateCharactersString];
+    NSDate *now = [NSDate date];
+    NSDateComponents *ageComponents = [[NSCalendar currentCalendar]
+                                   components:NSYearCalendarUnit
+                                   fromDate:birthday
+                                   toDate:now
+                                   options:0];
+    NSUInteger age = [ageComponents year];
+
+    return age;
 }
 
 - (BOOL)isDNumber
