@@ -23,6 +23,8 @@ static NSString *HYPBaseSSN = @"03129041853";
 - (void)setUp
 {
     [super setUp];
+
+    self.ssn = [[HYPNorwegianSSN alloc] initWithSSN:HYPBaseSSN];
 }
 
 - (void)tearDown
@@ -32,16 +34,19 @@ static NSString *HYPBaseSSN = @"03129041853";
 
 - (void)testAgePresence
 {
-    self.ssn = [[HYPNorwegianSSN alloc] initWithSSN:HYPBaseSSN];
+
 
     XCTAssert((self.ssn.age > 0), @"Age is higher than zero");
 }
 
 - (void)testAgeCalculation
 {
-    self.ssn = [[HYPNorwegianSSN alloc] initWithSSN:HYPBaseSSN];
-
     XCTAssert((self.ssn.age == 24), @"Age is higher than zero");
+}
+
+- (void)testIfFemale
+{
+    XCTAssert(self.ssn.isFemale, @"Is Female");
 }
 
 @end
