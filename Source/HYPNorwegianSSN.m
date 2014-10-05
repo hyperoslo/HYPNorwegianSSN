@@ -26,10 +26,9 @@
         NSLog(@"%s:%d -> %@",  __FUNCTION__, __LINE__, @"Unable to calculate age because SSN is not long enough");
     }
 
-    NSString *dateCharactersString = [self.SSN substringToIndex:6];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"DDMMYY";
-    NSDate *birthday = [formatter dateFromString:dateCharactersString];
+    NSDate *birthday = [formatter dateFromString:self.dateOfBirthString];
     NSDate *now = [NSDate date];
     NSDateComponents *ageComponents = [[NSCalendar currentCalendar]
                                    components:NSYearCalendarUnit
@@ -48,17 +47,35 @@
 
 - (BOOL)isFemale
 {
-    return NO;
+    NSInteger personalNumber = [self.personalNumberString integerValue];
+    return (personalNumber % 2);
 }
 
 - (BOOL)isMale
 {
-    return NO;
+    return ![self isFemale];
 }
 
 - (BOOL)isValid
 {
     return NO;
+}
+
+#pragma mark - Private methods
+
+- (NSString *)dateOfBirthString
+{
+    return [self.SSN substringToIndex:6];
+}
+
+- (NSString *)personalNumberString
+{
+    return [self.SSN substringWithRange:NSMakeRange(6,3)];
+}
+
+- (NSString *)controlNumberString
+{
+    return [self.SSN substringFromIndex:9];
 }
 
 @end

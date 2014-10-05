@@ -14,7 +14,7 @@ static NSString *HYPBaseSSN = @"03129041853";
 
 @interface HYPNorwegianSSNTests : XCTestCase
 
-@property (nonatomic, strong) HYPNorwegianSSN *ssn;
+@property (nonatomic, strong) HYPNorwegianSSN *SSN;
 
 @end
 
@@ -24,7 +24,7 @@ static NSString *HYPBaseSSN = @"03129041853";
 {
     [super setUp];
 
-    self.ssn = [[HYPNorwegianSSN alloc] initWithSSN:HYPBaseSSN];
+    self.SSN = [[HYPNorwegianSSN alloc] initWithSSN:HYPBaseSSN];
 }
 
 - (void)tearDown
@@ -36,17 +36,22 @@ static NSString *HYPBaseSSN = @"03129041853";
 {
 
 
-    XCTAssert((self.ssn.age > 0), @"Age is higher than zero");
+    XCTAssert((self.SSN.age > 0), @"Age is higher than zero");
 }
 
 - (void)testAgeCalculation
 {
-    XCTAssert((self.ssn.age == 24), @"Age is higher than zero");
+    XCTAssert((self.SSN.age == 24), @"Age is higher than zero");
 }
 
 - (void)testIfFemale
 {
-    XCTAssert(self.ssn.isFemale, @"Is Female");
+    XCTAssert(!self.SSN.isFemale, @"Is not Female");
+}
+
+- (void)testIfMale
+{
+    XCTAssert(self.SSN.isMale, @"Is male");
 }
 
 @end
