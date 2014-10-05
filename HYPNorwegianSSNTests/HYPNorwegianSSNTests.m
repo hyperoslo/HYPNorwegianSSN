@@ -34,8 +34,6 @@ static NSString *HYPBaseSSN = @"03129041853";
 
 - (void)testAgePresence
 {
-
-
     XCTAssert((self.SSN.age > 0), @"Age is higher than zero");
 }
 
