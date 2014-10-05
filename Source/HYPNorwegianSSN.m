@@ -10,6 +10,16 @@
 
 @implementation HYPNorwegianSSN
 
+- (instancetype)initWithSSN:(NSString *)string
+{
+    self = [super init];
+    if (!self) return nil;
+
+    self.SSN = string;
+
+    return self;
+}
+
 - (NSUInteger)age
 {
     return 0;
