@@ -42,7 +42,9 @@
 
 - (BOOL)isDNumber
 {
-    return NO;
+    NSUInteger firstDigit = [[self.SSN substringToIndex:1] intValue];
+
+    return (firstDigit > 3);
 }
 
 - (BOOL)isFemale
