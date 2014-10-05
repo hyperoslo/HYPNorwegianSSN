@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		BD90227619E1B91B007967E6 /* HYPNorwegianSSNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD90227519E1B91B007967E6 /* HYPNorwegianSSNTests.m */; };
+		BD90227D19E1B95D007967E6 /* HYPNorwegianSSN.m in Sources */ = {isa = PBXBuildFile; fileRef = BD90227C19E1B95D007967E6 /* HYPNorwegianSSN.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BD90227019E1B91B007967E6 /* HYPNorwegianSSNTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYPNorwegianSSNTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD90227419E1B91B007967E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD90227519E1B91B007967E6 /* HYPNorwegianSSNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPNorwegianSSNTests.m; sourceTree = "<group>"; };
+		BD90227B19E1B95D007967E6 /* HYPNorwegianSSN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPNorwegianSSN.h; sourceTree = "<group>"; };
+		BD90227C19E1B95D007967E6 /* HYPNorwegianSSN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPNorwegianSSN.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +33,7 @@
 		BD83E01819E1B7A200FFFE7A = {
 			isa = PBXGroup;
 			children = (
+				BD90227A19E1B92E007967E6 /* Source */,
 				BD90227219E1B91B007967E6 /* HYPNorwegianSSNTests */,
 				BD90227119E1B91B007967E6 /* Products */,
 			);
@@ -58,6 +62,15 @@
 				BD90227419E1B91B007967E6 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD90227A19E1B92E007967E6 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BD90227B19E1B95D007967E6 /* HYPNorwegianSSN.h */,
+				BD90227C19E1B95D007967E6 /* HYPNorwegianSSN.m */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD90227619E1B91B007967E6 /* HYPNorwegianSSNTests.m in Sources */,
+				BD90227D19E1B95D007967E6 /* HYPNorwegianSSN.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
