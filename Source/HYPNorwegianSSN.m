@@ -23,9 +23,14 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 @implementation HYPNorwegianSSN
 
-+ (NSArray *)controlWeightNumbers
++ (NSArray *)firstControlWeightNumbers
 {
     return @[@3,@7,@6,@1,@8,@9,@4,@5,@2];
+}
+
++ (NSArray *)secondControlWeightNumbers
+{
+    return @[@5,@4,@3,@2,@7,@6,@5,@4,@3,@2];
 }
 
 - (instancetype)initWithSSN:(NSString *)string
@@ -98,6 +103,32 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (BOOL)isValid
 {
+    NSUInteger k1, k2;
+    NSString *ssn = [self.SSN substringToIndex:9];
+    NSArray *firstControlWeightNumbers = [HYPNorwegianSSN firstControlWeightNumbers];
+    NSArray *secondControlWeightNumbers = [HYPNorwegianSSN secondControlWeightNumbers];
+
+    k1 = 0;
+    for (int index=0; index < ssn.length; ++index) {
+        NSUInteger currentDigit = (NSUInteger)[[ssn substringWithRange:NSMakeRange(index,1)] integerValue];
+        k1 += [firstControlWeightNumbers[index] integerValue] * currentDigit;
+    }
+
+    k1 = 11 - (k1 - 11 * (k1 / 11));
+    k2 = 0;
+
+    for (int index=0; index < ssn.length; ++index) {
+        NSUInteger currentDigit = (NSUInteger)[[ssn substringWithRange:NSMakeRange(index,1)] integerValue];
+        k2 += [secondControlWeightNumbers[index] integerValue] * currentDigit;
+    }
+
+    k2 += self.self.secondControlNumber * k1;
+    k2 = 11 - (k2 - 11*(k2 / 11));
+
+    if (k1 == self.firstControlNumber && k2 == self.secondControlNumber) {
+        return YES;
+    }
+    
     return NO;
 }
 
@@ -110,7 +141,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSUInteger)DNumberValue
 {
-    return [[self.SSN substringToIndex:1] intValue];
+    return [[self.SSN substringToIndex:1] integerValue];
 }
 
 - (NSString *)dateOfBirthString
@@ -126,6 +157,16 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 - (NSString *)controlNumberString
 {
     return [self.SSN substringFromIndex:9];
+}
+
+- (NSUInteger)firstControlNumber
+{
+    return [[self.controlNumberString substringToIndex:1] integerValue];
+}
+
+- (NSUInteger)secondControlNumber
+{
+    return [[self.controlNumberString substringFromIndex:1] integerValue];
 }
 
 - (SSNCenturyType)bornInCentury:(NSUInteger)personalNumber
