@@ -23,6 +23,11 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 @implementation HYPNorwegianSSN
 
++ (NSArray *)controlWeightNumbers
+{
+    return @[@3,@7,@6,@1,@8,@9,@4,@5,@2];
+}
+
 - (instancetype)initWithSSN:(NSString *)string
 {
     self = [super init];
