@@ -59,8 +59,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     }
 
     if (self.isDNumber) {
-        NSUInteger DNumber = self.DNumberValue - 4;
-        NSString *replacementString = [NSString stringWithFormat:@"%d", DNumber];
+        NSString *replacementString = [NSString stringWithFormat:@"%d", self.DNumberValue - 4];
         [birthdayString replaceCharactersInRange:NSMakeRange(0, 1) withString:replacementString];
     }
 
