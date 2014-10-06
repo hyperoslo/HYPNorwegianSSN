@@ -26,31 +26,46 @@
         NSLog(@"%s:%d -> %@",  __FUNCTION__, __LINE__, @"Unable to calculate age because SSN is not long enough");
     }
 
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"DDMMYY";
-    NSDate *birthday = [formatter dateFromString:self.dateOfBirthString];
-    NSDate *now = [NSDate date];
+    SSNCenturyType century = [self bornInCentury:self.personalNumber];
+
+    NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:self.dateOfBirthString];
+
+    switch (century) {
+        case SSNNineteenthCenturyType:
+            [birthdayString insertString:@"18" atIndex:4];
+            break;
+        case SSNTwentiethCenturyType:
+        case SSNTwentiethCenturyAlternateType:
+            [birthdayString insertString:@"19" atIndex:4];
+            break;
+        case SSNTwentyFirstCenturyType:
+            [birthdayString insertString:@"20" atIndex:4];
+            break;
+        case SSNDefaultCenturyType:
+            break;
+    }
+
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"DDMMYYYY";
+    NSDate *birthday = [formatter dateFromString:[birthdayString copy]];
     NSDateComponents *ageComponents = [[NSCalendar currentCalendar]
                                    components:NSYearCalendarUnit
                                    fromDate:birthday
-                                   toDate:now
+                                   toDate:[NSDate date]
                                    options:0];
-    NSUInteger age = [ageComponents year];
+    NSUInteger age = ageComponents.year;
 
     return age;
 }
 
 - (BOOL)isDNumber
 {
-    NSUInteger firstDigit = [[self.SSN substringToIndex:1] intValue];
-
-    return (firstDigit > 3);
+    return (self.DNumberValue > 3);
 }
 
 - (BOOL)isFemale
 {
-    NSInteger personalNumber = [self.personalNumberString integerValue];
-    return !(personalNumber % 2);
+    return !(self.personalNumber % 2);
 }
 
 - (BOOL)isMale
@@ -65,6 +80,16 @@
 
 #pragma mark - Private methods
 
+- (NSUInteger)personalNumber
+{
+    return [self.personalNumberString integerValue];
+}
+
+- (NSUInteger)DNumberValue
+{
+    return [[self.SSN substringToIndex:1] intValue];
+}
+
 - (NSString *)dateOfBirthString
 {
     return [self.SSN substringToIndex:6];
@@ -78,6 +103,26 @@
 - (NSString *)controlNumberString
 {
     return [self.SSN substringFromIndex:9];
+}
+
+- (SSNCenturyType)bornInCentury:(NSUInteger)personalNumber
+{
+    NSRange twentiethCenturyRange = NSMakeRange(0, 499);
+    NSRange nineteenthCenturyRange = NSMakeRange(500, 749-500);
+    NSRange twentyFirstCenturyRange = NSMakeRange(500, 999-500);
+    NSRange twentiethCenturyAlternateRange = NSMakeRange(900, 999-900);
+
+    if (NSLocationInRange(personalNumber, twentiethCenturyRange)) {
+        return SSNTwentiethCenturyType;
+    } else if (NSLocationInRange(personalNumber, nineteenthCenturyRange)) {
+        return SSNNineteenthCenturyType;
+    } else if (NSLocationInRange(personalNumber, twentyFirstCenturyRange)) {
+        return SSNTwentyFirstCenturyType;
+    } else if (NSLocationInRange(personalNumber, twentiethCenturyAlternateRange)) {
+        return SSNTwentiethCenturyAlternateType;
+    }
+
+    return SSNDefaultCenturyType;
 }
 
 @end
