@@ -58,6 +58,12 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
             break;
     }
 
+    if (self.isDNumber) {
+        NSUInteger DNumber = self.DNumberValue - 4;
+        NSString *replacementString = [NSString stringWithFormat:@"%d", DNumber];
+        [birthdayString replaceCharactersInRange:NSMakeRange(0, 1) withString:replacementString];
+    }
+
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = @"DDMMYYYY";
     NSDate *birthday = [formatter dateFromString:[birthdayString copy]];
