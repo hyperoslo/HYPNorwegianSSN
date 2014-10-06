@@ -32,6 +32,11 @@ static NSString *HYPBaseSSN = @"01015000232";
     [super tearDown];
 }
 
+- (void)testSSNValidation
+{
+    XCTAssert(self.SSN.valid, @"SSN is valid");
+}
+
 - (void)testAgePresence
 {
     XCTAssert((self.SSN.age > 0), @"Age is higher than zero");
@@ -55,11 +60,6 @@ static NSString *HYPBaseSSN = @"01015000232";
 - (void)testDNumber
 {
     XCTAssert(!self.SSN.isDNumber, @"Is not D-Number (not a party swede, thank god)");
-}
-
-- (void)testSSNValidation
-{
-    XCTAssert(self.SSN.valid, @"SSN is valid");
 }
 
 @end
