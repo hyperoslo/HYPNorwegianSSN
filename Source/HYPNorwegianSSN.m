@@ -8,6 +8,11 @@
 
 #import "HYPNorwegianSSN.h"
 
+NSRange HYPTwentiethCenturyRange = {0, 499};
+NSRange HYPNineteenthCenturyRange = {500, 749-500};
+NSRange HYPTwentyFirstCenturyRange = {500, 999-500};
+NSRange HYPTwentiethCenturyAlternateRange = {900, 999-900};
+
 @implementation HYPNorwegianSSN
 
 - (instancetype)initWithSSN:(NSString *)string
@@ -107,18 +112,13 @@
 
 - (SSNCenturyType)bornInCentury:(NSUInteger)personalNumber
 {
-    NSRange twentiethCenturyRange = NSMakeRange(0, 499);
-    NSRange nineteenthCenturyRange = NSMakeRange(500, 749-500);
-    NSRange twentyFirstCenturyRange = NSMakeRange(500, 999-500);
-    NSRange twentiethCenturyAlternateRange = NSMakeRange(900, 999-900);
-
-    if (NSLocationInRange(personalNumber, twentiethCenturyRange)) {
+    if (NSLocationInRange(personalNumber, HYPTwentiethCenturyRange)) {
         return SSNTwentiethCenturyType;
-    } else if (NSLocationInRange(personalNumber, nineteenthCenturyRange)) {
+    } else if (NSLocationInRange(personalNumber, HYPNineteenthCenturyRange)) {
         return SSNNineteenthCenturyType;
-    } else if (NSLocationInRange(personalNumber, twentyFirstCenturyRange)) {
+    } else if (NSLocationInRange(personalNumber, HYPTwentyFirstCenturyRange)) {
         return SSNTwentyFirstCenturyType;
-    } else if (NSLocationInRange(personalNumber, twentiethCenturyAlternateRange)) {
+    } else if (NSLocationInRange(personalNumber, HYPTwentiethCenturyAlternateRange)) {
         return SSNTwentiethCenturyAlternateType;
     }
 
