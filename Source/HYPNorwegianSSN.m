@@ -13,6 +13,14 @@ NSRange HYPNineteenthCenturyRange = {500, 749-500};
 NSRange HYPTwentyFirstCenturyRange = {500, 999-500};
 NSRange HYPTwentiethCenturyAlternateRange = {900, 999-900};
 
+typedef NS_ENUM(NSInteger, SSNCenturyType) {
+    SSNDefaultCenturyType = 0,
+    SSNNineteenthCenturyType,
+    SSNTwentiethCenturyType,
+    SSNTwentyFirstCenturyType,
+    SSNTwentiethCenturyAlternateType
+};
+
 @implementation HYPNorwegianSSN
 
 - (instancetype)initWithSSN:(NSString *)string
