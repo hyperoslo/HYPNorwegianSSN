@@ -103,36 +103,40 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (BOOL)isValid
 {
-    NSUInteger k1, k2;
+    NSInteger k1, k2;
     NSString *ssn = [self.SSN substringToIndex:9];
-    NSArray *firstControlWeightNumbers = [HYPNorwegianSSN firstControlWeightNumbers];
+
+    k1 = [self calculateSSN:ssn withWeightNumbers:[HYPNorwegianSSN firstControlWeightNumbers]];
+    k1 = 11 - (k1 % 11);
+
+    if (k1 == 11)
+        k1 = 0;
+
     NSArray *secondControlWeightNumbers = [HYPNorwegianSSN secondControlWeightNumbers];
-
-    k1 = 0;
-    for (int index=0; index < ssn.length; ++index) {
-        NSUInteger currentDigit = (NSUInteger)[[ssn substringWithRange:NSMakeRange(index,1)] integerValue];
-        k1 += [firstControlWeightNumbers[index] integerValue] * currentDigit;
-    }
-
-    k1 = 11 - (k1 - 11 * (k1 / 11));
-    k2 = 0;
-
-    for (int index=0; index < ssn.length; ++index) {
-        NSUInteger currentDigit = (NSUInteger)[[ssn substringWithRange:NSMakeRange(index,1)] integerValue];
-        k2 += [secondControlWeightNumbers[index] integerValue] * currentDigit;
-    }
-
-    k2 += self.self.secondControlNumber * k1;
-    k2 = 11 - (k2 - 11*(k2 / 11));
+    k2  = [self calculateSSN:ssn withWeightNumbers:secondControlWeightNumbers];
+    k2 += [[secondControlWeightNumbers lastObject] integerValue] * k1;
+    k2  = 11 - (k2 % 11);
 
     if (k1 == self.firstControlNumber && k2 == self.secondControlNumber) {
         return YES;
     }
-    
+
     return NO;
 }
 
 #pragma mark - Private methods
+
+- (NSUInteger)calculateSSN:(NSString *)SSN withWeightNumbers:(NSArray *)weightNumbers
+{
+    NSUInteger result = 0;
+
+    for (int index=0; index < SSN.length; ++index) {
+        NSUInteger currentDigit = (NSUInteger)[[SSN substringWithRange:NSMakeRange(index,1)] integerValue];
+        result += [weightNumbers[index] integerValue] * currentDigit;
+    }
+
+    return result;
+}
 
 - (NSUInteger)personalNumber
 {
