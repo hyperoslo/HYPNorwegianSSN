@@ -9,9 +9,9 @@
 #import "HYPNorwegianSSN.h"
 
 NSRange HYPTwentiethCenturyRange = {0, 499};
-NSRange HYPNineteenthCenturyRange = {500, 749-500};
-NSRange HYPTwentyFirstCenturyRange = {500, 999-500};
-NSRange HYPTwentiethCenturyAlternateRange = {900, 999-900};
+NSRange HYPNineteenthCenturyRange = {500, 749-500+1};
+NSRange HYPTwentyFirstCenturyRange = {500, 999-500+1};
+NSRange HYPTwentiethCenturyAlternateRange = {900, 999-900+1};
 
 typedef NS_ENUM(NSInteger, SSNCenturyType) {
     SSNDefaultCenturyType = 0,
