@@ -103,21 +103,21 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (BOOL)isValid
 {
-    NSInteger k1, k2;
+    NSInteger firstControlDigit, secondControlDigit;
     NSString *ssn = [self.SSN substringToIndex:9];
 
-    k1 = [self calculateSSN:ssn withWeightNumbers:[HYPNorwegianSSN firstControlWeightNumbers]];
-    k1 = 11 - (k1 % 11);
+    firstControlDigit = [self calculateSSN:ssn withWeightNumbers:[HYPNorwegianSSN firstControlWeightNumbers]];
+    firstControlDigit = 11 - (firstControlDigit % 11);
 
-    if (k1 == 11)
-        k1 = 0;
+    if (firstControlDigit == 11)
+        firstControlDigit = 0;
 
     NSArray *secondControlWeightNumbers = [HYPNorwegianSSN secondControlWeightNumbers];
-    k2  = [self calculateSSN:ssn withWeightNumbers:secondControlWeightNumbers];
-    k2 += [[secondControlWeightNumbers lastObject] integerValue] * k1;
-    k2  = 11 - (k2 % 11);
+    secondControlDigit  = [self calculateSSN:ssn withWeightNumbers:secondControlWeightNumbers];
+    secondControlDigit += [[secondControlWeightNumbers lastObject] integerValue] * firstControlDigit;
+    secondControlDigit  = 11 - (secondControlDigit % 11);
 
-    if (k1 == self.firstControlNumber && k2 == self.secondControlNumber) {
+    if (firstControlDigit == self.firstControlNumber && secondControlDigit == self.secondControlNumber) {
         return YES;
     }
 
