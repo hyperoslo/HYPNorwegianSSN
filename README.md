@@ -1,7 +1,7 @@
 HYPNorwegianSSN
 ===============
 
-A convenient way of validating and extracting infos from a Norwegian Social Security Number
+A convenient way of validating and extracting info from a Norwegian Social Security Number
 
 ``` objc
 HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithSSN:@"xxxxxxxxxxx"];
