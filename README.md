@@ -29,7 +29,7 @@ if (!ssn.isMale) {
     NSLog(@"Doh!");
 }
 
-if (ssn.age > 18) {
+if (ssn.age >= 18 && ssn.age < 35) {
     NSLog(@"Dear diary, jackpot");
     [self enableTheSmoulder:YES];
 }
