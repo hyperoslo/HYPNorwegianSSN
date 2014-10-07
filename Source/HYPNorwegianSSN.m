@@ -8,7 +8,30 @@
 
 #import "HYPNorwegianSSN.h"
 
+NSRange HYPTwentiethCenturyRange = {0, 499};
+NSRange HYPNineteenthCenturyRange = {500, 749-500+1};
+NSRange HYPTwentyFirstCenturyRange = {500, 999-500+1};
+NSRange HYPTwentiethCenturyAlternateRange = {900, 999-900+1};
+
+typedef NS_ENUM(NSInteger, SSNCenturyType) {
+    SSNDefaultCenturyType = 0,
+    SSNNineteenthCenturyType,
+    SSNTwentiethCenturyType,
+    SSNTwentyFirstCenturyType,
+    SSNTwentiethCenturyAlternateType
+};
+
 @implementation HYPNorwegianSSN
+
++ (NSArray *)firstControlWeightNumbers
+{
+    return @[@3,@7,@6,@1,@8,@9,@4,@5,@2];
+}
+
++ (NSArray *)secondControlWeightNumbers
+{
+    return @[@5,@4,@3,@2,@7,@6,@5,@4,@3,@2];
+}
 
 - (instancetype)initWithSSN:(NSString *)string
 {
@@ -26,31 +49,51 @@
         NSLog(@"%s:%d -> %@",  __FUNCTION__, __LINE__, @"Unable to calculate age because SSN is not long enough");
     }
 
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"DDMMYY";
-    NSDate *birthday = [formatter dateFromString:self.dateOfBirthString];
-    NSDate *now = [NSDate date];
+    SSNCenturyType century = [self bornInCentury:self.personalNumber];
+
+    NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:self.dateOfBirthString];
+
+    switch (century) {
+        case SSNNineteenthCenturyType:
+            [birthdayString insertString:@"18" atIndex:4];
+            break;
+        case SSNTwentiethCenturyType:
+        case SSNTwentiethCenturyAlternateType:
+            [birthdayString insertString:@"19" atIndex:4];
+            break;
+        case SSNTwentyFirstCenturyType:
+            [birthdayString insertString:@"20" atIndex:4];
+            break;
+        case SSNDefaultCenturyType:
+            break;
+    }
+
+    if (self.isDNumber) {
+        NSString *replacementString = [NSString stringWithFormat:@"%lu", (unsigned long)(self.DNumberValue - 4)];
+        [birthdayString replaceCharactersInRange:NSMakeRange(0, 1) withString:replacementString];
+    }
+
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"DDMMYYYY";
+    NSDate *birthday = [formatter dateFromString:[birthdayString copy]];
     NSDateComponents *ageComponents = [[NSCalendar currentCalendar]
                                    components:NSYearCalendarUnit
                                    fromDate:birthday
-                                   toDate:now
+                                   toDate:[NSDate date]
                                    options:0];
-    NSUInteger age = [ageComponents year];
+    NSUInteger age = ageComponents.year;
 
     return age;
 }
 
 - (BOOL)isDNumber
 {
-    NSUInteger firstDigit = [[self.SSN substringToIndex:1] intValue];
-
-    return (firstDigit > 3);
+    return (self.DNumberValue > 3);
 }
 
 - (BOOL)isFemale
 {
-    NSInteger personalNumber = [self.personalNumberString integerValue];
-    return !(personalNumber % 2);
+    return !(self.personalNumber % 2);
 }
 
 - (BOOL)isMale
@@ -60,10 +103,50 @@
 
 - (BOOL)isValid
 {
+    NSInteger firstControlDigit, secondControlDigit;
+    NSString *ssn = [self.SSN substringToIndex:9];
+
+    firstControlDigit = [self calculateSSN:ssn withWeightNumbers:[HYPNorwegianSSN firstControlWeightNumbers]];
+    firstControlDigit = 11 - (firstControlDigit % 11);
+
+    if (firstControlDigit == 11)
+        firstControlDigit = 0;
+
+    NSArray *secondControlWeightNumbers = [HYPNorwegianSSN secondControlWeightNumbers];
+    secondControlDigit  = [self calculateSSN:ssn withWeightNumbers:secondControlWeightNumbers];
+    secondControlDigit += [[secondControlWeightNumbers lastObject] integerValue] * firstControlDigit;
+    secondControlDigit  = 11 - (secondControlDigit % 11);
+
+    if (firstControlDigit == self.firstControlNumber && secondControlDigit == self.secondControlNumber) {
+        return YES;
+    }
+
     return NO;
 }
 
 #pragma mark - Private methods
+
+- (NSUInteger)calculateSSN:(NSString *)SSN withWeightNumbers:(NSArray *)weightNumbers
+{
+    NSUInteger result = 0;
+
+    for (int index=0; index < SSN.length; ++index) {
+        NSUInteger currentDigit = (NSUInteger)[[SSN substringWithRange:NSMakeRange(index,1)] integerValue];
+        result += [weightNumbers[index] integerValue] * currentDigit;
+    }
+
+    return result;
+}
+
+- (NSUInteger)personalNumber
+{
+    return [self.personalNumberString integerValue];
+}
+
+- (NSUInteger)DNumberValue
+{
+    return [[self.SSN substringToIndex:1] integerValue];
+}
 
 - (NSString *)dateOfBirthString
 {
@@ -78,6 +161,31 @@
 - (NSString *)controlNumberString
 {
     return [self.SSN substringFromIndex:9];
+}
+
+- (NSUInteger)firstControlNumber
+{
+    return [[self.controlNumberString substringToIndex:1] integerValue];
+}
+
+- (NSUInteger)secondControlNumber
+{
+    return [[self.controlNumberString substringFromIndex:1] integerValue];
+}
+
+- (SSNCenturyType)bornInCentury:(NSUInteger)personalNumber
+{
+    if (NSLocationInRange(personalNumber, HYPTwentiethCenturyRange)) {
+        return SSNTwentiethCenturyType;
+    } else if (NSLocationInRange(personalNumber, HYPNineteenthCenturyRange)) {
+        return SSNNineteenthCenturyType;
+    } else if (NSLocationInRange(personalNumber, HYPTwentyFirstCenturyRange)) {
+        return SSNTwentyFirstCenturyType;
+    } else if (NSLocationInRange(personalNumber, HYPTwentiethCenturyAlternateRange)) {
+        return SSNTwentiethCenturyAlternateType;
+    }
+
+    return SSNDefaultCenturyType;
 }
 
 @end

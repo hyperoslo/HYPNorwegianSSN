@@ -10,7 +10,7 @@
 #import <XCTest/XCTest.h>
 #import "HYPNorwegianSSN.h"
 
-static NSString *HYPBaseSSN = @"03129041853";
+static NSString *HYPBaseSSN = @"01015000232";
 
 @interface HYPNorwegianSSNTests : XCTestCase
 
@@ -32,6 +32,11 @@ static NSString *HYPBaseSSN = @"03129041853";
     [super tearDown];
 }
 
+- (void)testSSNValidation
+{
+    XCTAssert(self.SSN.valid, @"SSN is valid");
+}
+
 - (void)testAgePresence
 {
     XCTAssert((self.SSN.age > 0), @"Age is higher than zero");
@@ -39,7 +44,7 @@ static NSString *HYPBaseSSN = @"03129041853";
 
 - (void)testAgeCalculation
 {
-    XCTAssert((self.SSN.age == 24), @"Age is higher than zero");
+    XCTAssert((self.SSN.age == 64), @"Age is higher than zero");
 }
 
 - (void)testIfFemale
