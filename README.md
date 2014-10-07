@@ -24,8 +24,9 @@ if (ssn.isFemale) {
 NSLog(@"Are you sure? Remember what happened last time?");
 
 if (!ssn.isMale) {
-    NSLog(@"yeah I'm sure, this is not an Aerosmith song!");
+    NSLog(@"Yeah I'm sure, this is not an Aerosmith song!");
     [self startWhistlingOnTune:@"Aerosmith -  Dude (looks like a lady)"];
+    NSLog(@"Doh!");
 }
 
 if (ssn.age > 18) {
