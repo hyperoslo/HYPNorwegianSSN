@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     return @[@5,@4,@3,@2,@7,@6,@5,@4,@3,@2];
 }
 
-- (instancetype)initWithSSN:(NSString *)string
+- (instancetype)initWithString:(NSString *)string
 {
     self = [super init];
     if (!self) return nil;

@@ -17,6 +17,6 @@
 @property (nonatomic, readonly, getter=isMale)   BOOL male;
 @property (nonatomic, readonly, getter=isValid)  BOOL valid;
 
-- (instancetype)initWithSSN:(NSString *)string;
+- (instancetype)initWithString:(NSString *)string;
 
 @end
