@@ -24,7 +24,7 @@ static NSString *HYPBaseSSN = @"01015000232";
 {
     [super setUp];
 
-    self.SSN = [[HYPNorwegianSSN alloc] initWithSSN:HYPBaseSSN];
+    self.SSN = [[HYPNorwegianSSN alloc] initWithString:HYPBaseSSN];
 }
 
 - (void)tearDown
