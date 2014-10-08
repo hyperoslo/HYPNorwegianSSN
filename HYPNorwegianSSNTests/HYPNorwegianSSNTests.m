@@ -62,4 +62,9 @@ static NSString *HYPBaseSSN = @"01015000232";
     XCTAssert(!self.SSN.isDNumber, @"Is not D-Number (not a party swede, thank god)");
 }
 
+- (void)testDateOfBirth
+{
+    XCTAssert([self.SSN.dateOfBirthString isEqualToString:@"010150"], @"Sucessfully extracted date of birth");
+}
+
 @end

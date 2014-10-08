@@ -49,9 +49,9 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
         NSLog(@"%s:%d -> %@",  __FUNCTION__, __LINE__, @"Unable to calculate age because SSN is not long enough");
     }
 
-    SSNCenturyType century = [self bornInCentury:self.personalNumber];
-
     NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:self.dateOfBirthString];
+
+    SSNCenturyType century = [self bornInCentury:self.personalNumber];
 
     switch (century) {
         case SSNNineteenthCenturyType:
@@ -68,14 +68,9 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
             break;
     }
 
-    if (self.isDNumber) {
-        NSString *replacementString = [NSString stringWithFormat:@"%lu", (unsigned long)(self.DNumberValue - 4)];
-        [birthdayString replaceCharactersInRange:NSMakeRange(0, 1) withString:replacementString];
-    }
-
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = @"DDMMYYYY";
-    NSDate *birthday = [formatter dateFromString:[birthdayString copy]];
+    NSDate *birthday = [formatter dateFromString:birthdayString];
     NSDateComponents *ageComponents = [[NSCalendar currentCalendar]
                                    components:NSYearCalendarUnit
                                    fromDate:birthday
@@ -124,6 +119,18 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     return NO;
 }
 
+- (NSString *)dateOfBirthString
+{
+    NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:[self extractDateOfBirth]];
+
+    if (self.isDNumber) {
+        NSString *replacementString = [NSString stringWithFormat:@"%lu", (unsigned long)(self.DNumberValue - 4)];
+        [birthdayString replaceCharactersInRange:NSMakeRange(0, 1) withString:replacementString];
+    }
+
+    return [birthdayString copy];
+}
+
 #pragma mark - Private methods
 
 - (NSUInteger)calculateSSN:(NSString *)SSN withWeightNumbers:(NSArray *)weightNumbers
@@ -148,7 +155,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     return [[self.SSN substringToIndex:1] integerValue];
 }
 
-- (NSString *)dateOfBirthString
+- (NSString *)extractDateOfBirth
 {
     return [self.SSN substringToIndex:6];
 }

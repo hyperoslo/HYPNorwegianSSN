@@ -18,5 +18,6 @@
 @property (nonatomic, readonly, getter=isValid)  BOOL valid;
 
 - (instancetype)initWithString:(NSString *)string;
+- (NSString *)dateOfBirthString;
 
 @end
