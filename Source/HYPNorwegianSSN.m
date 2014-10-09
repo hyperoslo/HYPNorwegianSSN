@@ -33,6 +33,12 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     return @[@5,@4,@3,@2,@7,@6,@5,@4,@3,@2];
 }
 
++ (BOOL)validateWithString:(NSString *)string
+{
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:string];
+    return ssn.isValid;
+}
+
 - (instancetype)initWithString:(NSString *)string
 {
     self = [super init];
@@ -141,7 +147,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = @"DDMMyyyy";
     NSDate *date = [formatter dateFromString:self.dateOfBirthStringWithCentury];
-    
+
     return date;
 }
 

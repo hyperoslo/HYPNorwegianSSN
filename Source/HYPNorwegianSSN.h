@@ -17,6 +17,7 @@
 @property (nonatomic, readonly, getter=isMale)   BOOL male;
 @property (nonatomic, readonly, getter=isValid)  BOOL valid;
 
++ (BOOL)validateWithString:(NSString *)string;
 - (instancetype)initWithString:(NSString *)string;
 - (NSDate *)birthdate;
 - (NSString *)dateOfBirthString;
