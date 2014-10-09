@@ -51,4 +51,4 @@ and if you're using this library we probably want to hire you.
 
 ## License
 
-HYPNorwegianSSN is available under the MIT license. See the [LICENSE](https://raw.githubusercontent.com/hyperoslo/HYPNorwegianSSN/develop/README.md?token=57446__eyJzY29wZSI6IlJhd0Jsb2I6aHlwZXJvc2xvL0hZUE5vcndlZ2lhblNTTi9kZXZlbG9wL1JFQURNRS5tZCIsImV4cGlyZXMiOjE0MTMyNjYxNzZ9--982833554d17dacc13e570f50951c8e99c153b95) file for more info.
+HYPNorwegianSSN is available under the MIT license. See the [LICENSE](https://github.com/hyperoslo/HYPNorwegianSSN/raw/develop/LICENSE.md) file for more info.
