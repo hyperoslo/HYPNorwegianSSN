@@ -138,8 +138,11 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSDate *)birthdate
 {
-
-    return nil;
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"DDMMyyyy";
+    NSDate *date = [formatter dateFromString:self.dateOfBirthStringWithCentury];
+    
+    return date;
 }
 
 #pragma mark - Private methods
