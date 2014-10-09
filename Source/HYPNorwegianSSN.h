@@ -18,6 +18,8 @@
 @property (nonatomic, readonly, getter=isValid)  BOOL valid;
 
 - (instancetype)initWithString:(NSString *)string;
+- (NSDate *)birthdate;
 - (NSString *)dateOfBirthString;
+- (NSString *)dateOfBirthStringWithCentury;
 
 @end

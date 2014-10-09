@@ -49,28 +49,9 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
         NSLog(@"%s:%d -> %@",  __FUNCTION__, __LINE__, @"Unable to calculate age because SSN is not long enough");
     }
 
-    NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:self.dateOfBirthString];
-
-    SSNCenturyType century = [self bornInCentury:self.personalNumber];
-
-    switch (century) {
-        case SSNNineteenthCenturyType:
-            [birthdayString insertString:@"18" atIndex:4];
-            break;
-        case SSNTwentiethCenturyType:
-        case SSNTwentiethCenturyAlternateType:
-            [birthdayString insertString:@"19" atIndex:4];
-            break;
-        case SSNTwentyFirstCenturyType:
-            [birthdayString insertString:@"20" atIndex:4];
-            break;
-        case SSNDefaultCenturyType:
-            break;
-    }
-
     NSDateFormatter *formatter = [NSDateFormatter new];
-    NSDate *birthday = [formatter dateFromString:birthdayString];
     formatter.dateFormat = @"DDMMyyyy";
+    NSDate *birthday = [formatter dateFromString:self.dateOfBirthStringWithCentury];
     NSDateComponents *ageComponents = [[NSCalendar currentCalendar]
                                    components:NSYearCalendarUnit
                                    fromDate:birthday
@@ -129,6 +110,36 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     }
 
     return [birthdayString copy];
+}
+
+- (NSString *)dateOfBirthStringWithCentury
+{
+    NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:self.dateOfBirthString];
+
+    SSNCenturyType century = [self bornInCentury:self.personalNumber];
+
+    switch (century) {
+        case SSNNineteenthCenturyType:
+            [birthdayString insertString:@"18" atIndex:4];
+            break;
+        case SSNTwentiethCenturyType:
+        case SSNTwentiethCenturyAlternateType:
+            [birthdayString insertString:@"19" atIndex:4];
+            break;
+        case SSNTwentyFirstCenturyType:
+            [birthdayString insertString:@"20" atIndex:4];
+            break;
+        case SSNDefaultCenturyType:
+            break;
+    }
+
+    return [birthdayString copy];
+}
+
+- (NSDate *)birthdate
+{
+
+    return nil;
 }
 
 #pragma mark - Private methods
