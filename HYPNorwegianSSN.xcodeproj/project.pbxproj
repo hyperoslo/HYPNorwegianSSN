@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD37E0B719E6BF0400E45BB4 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = BD37E0A919E6BF0400E45BB4 /* .travis.yml */; };
 		BD90227619E1B91B007967E6 /* HYPNorwegianSSNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD90227519E1B91B007967E6 /* HYPNorwegianSSNTests.m */; };
 		BD90227D19E1B95D007967E6 /* HYPNorwegianSSN.m in Sources */ = {isa = PBXBuildFile; fileRef = BD90227C19E1B95D007967E6 /* HYPNorwegianSSN.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD37E0A919E6BF0400E45BB4 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		BD90227019E1B91B007967E6 /* HYPNorwegianSSNTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYPNorwegianSSNTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD90227419E1B91B007967E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD90227519E1B91B007967E6 /* HYPNorwegianSSNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPNorwegianSSNTests.m; sourceTree = "<group>"; };
@@ -33,6 +35,7 @@
 		BD83E01819E1B7A200FFFE7A = {
 			isa = PBXGroup;
 			children = (
+				BD37E0A919E6BF0400E45BB4 /* .travis.yml */,
 				BD90227A19E1B92E007967E6 /* Source */,
 				BD90227219E1B91B007967E6 /* HYPNorwegianSSNTests */,
 				BD90227119E1B91B007967E6 /* Products */,
@@ -128,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD37E0B719E6BF0400E45BB4 /* .travis.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
