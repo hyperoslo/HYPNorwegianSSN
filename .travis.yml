@@ -1,5 +1,3 @@
 language: objective-c
-before_install:
-    - brew update
-    - brew install xctool
-script: xctool -project HYPNorwegianSSN.xcodeproj -scheme HYPNorwegianSSNTests test
+xcode_project: HYPNorwegianSSN.xcodeproj
+xcode_scheme: HYPNorwegianSSNTests
