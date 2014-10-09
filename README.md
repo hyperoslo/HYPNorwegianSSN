@@ -4,7 +4,7 @@ HYPNorwegianSSN
 A convenient way of validating and extracting info from a Norwegian Social Security Number
 
 ``` objc
-HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithSSN:@"xxxxxxxxxxx"];
+HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"xxxxxxxxxxx"];
 
 if (ssn.isValid) {
     NSLog(@"Yeap, this is valid alright, tell me more about this so called person.");

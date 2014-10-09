@@ -62,4 +62,23 @@ static NSString *HYPBaseSSN = @"01015000232";
     XCTAssert(!self.SSN.isDNumber, @"Is not D-Number (not a party swede, thank god)");
 }
 
+- (void)testDateOfBirthString
+{
+    XCTAssert([self.SSN.dateOfBirthString isEqualToString:@"010150"], @"Sucessfully extracted date of birth");
+}
+
+- (void)testDateOfBirthStringWithCentury
+{
+    XCTAssert([self.SSN.dateOfBirthStringWithCentury isEqualToString:@"01011950"], @"Sucessfully extracted date of birth");
+}
+
+- (void)testBirthdate
+{
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"DDMMyyyy";
+    NSDate *date = [formatter dateFromString:self.SSN.dateOfBirthStringWithCentury];
+
+    XCTAssert(date, @"Date of birth is an NSDate");
+}
+
 @end
