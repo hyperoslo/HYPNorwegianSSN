@@ -69,8 +69,8 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     }
 
     NSDateFormatter *formatter = [NSDateFormatter new];
-    formatter.dateFormat = @"DDMMYYYY";
     NSDate *birthday = [formatter dateFromString:birthdayString];
+    formatter.dateFormat = @"DDMMyyyy";
     NSDateComponents *ageComponents = [[NSCalendar currentCalendar]
                                    components:NSYearCalendarUnit
                                    fromDate:birthday
