@@ -1,6 +1,6 @@
 #HYPNorwegianSSN
 
-[![Build Status](https://travis-ci.org/hyperoslo/HYPNorwegianSSN.svg)](https://travis-ci.org/hyperoslo/HYPNorwegianSSN)
+[![Build Status](https://img.shields.io/travis/hyperoslo/HYPNorwegianSSN.svg?style=flat)](https://travis-ci.org/hyperoslo/HYPNorwegianSSN)
 
 A convenient way of validating and extracting info from a Norwegian Social Security Number
 
