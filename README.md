@@ -46,7 +46,7 @@ if (ssn.age >= 18 && ssn.age < 35) {
 
 ## Credits
 
-Hyper made this. We're a digital communications agency with a passion for good code,
+[Hyper](http://hyper.no) made this. We're a digital communications agency with a passion for good code,
 and if you're using this library we probably want to hire you.
 
 ## License
