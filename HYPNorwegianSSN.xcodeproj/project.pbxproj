@@ -10,6 +10,8 @@
 		BD37E0B719E6BF0400E45BB4 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = BD37E0A919E6BF0400E45BB4 /* .travis.yml */; };
 		BD90227619E1B91B007967E6 /* HYPNorwegianSSNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD90227519E1B91B007967E6 /* HYPNorwegianSSNTests.m */; };
 		BD90227D19E1B95D007967E6 /* HYPNorwegianSSN.m in Sources */ = {isa = PBXBuildFile; fileRef = BD90227C19E1B95D007967E6 /* HYPNorwegianSSN.m */; };
+		BDE1B5C719E9367500BE39EA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = BDE1B5C519E9367500BE39EA /* README.md */; };
+		BDE1B5C819E9367500BE39EA /* HYPNorwegianSSN.podspec in Resources */ = {isa = PBXBuildFile; fileRef = BDE1B5C619E9367500BE39EA /* HYPNorwegianSSN.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		BD90227519E1B91B007967E6 /* HYPNorwegianSSNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPNorwegianSSNTests.m; sourceTree = "<group>"; };
 		BD90227B19E1B95D007967E6 /* HYPNorwegianSSN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPNorwegianSSN.h; sourceTree = "<group>"; };
 		BD90227C19E1B95D007967E6 /* HYPNorwegianSSN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPNorwegianSSN.m; sourceTree = "<group>"; };
+		BDE1B5C519E9367500BE39EA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BDE1B5C619E9367500BE39EA /* HYPNorwegianSSN.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HYPNorwegianSSN.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,8 @@
 			isa = PBXGroup;
 			children = (
 				BD37E0A919E6BF0400E45BB4 /* .travis.yml */,
+				BDE1B5C519E9367500BE39EA /* README.md */,
+				BDE1B5C619E9367500BE39EA /* HYPNorwegianSSN.podspec */,
 				BD90227A19E1B92E007967E6 /* Source */,
 				BD90227219E1B91B007967E6 /* HYPNorwegianSSNTests */,
 				BD90227119E1B91B007967E6 /* Products */,
@@ -131,6 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE1B5C819E9367500BE39EA /* HYPNorwegianSSN.podspec in Resources */,
 				BD37E0B719E6BF0400E45BB4 /* .travis.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE1B5C719E9367500BE39EA /* README.md in Sources */,
 				BD90227619E1B91B007967E6 /* HYPNorwegianSSNTests.m in Sources */,
 				BD90227D19E1B95D007967E6 /* HYPNorwegianSSN.m in Sources */,
 			);
