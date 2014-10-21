@@ -85,6 +85,8 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (BOOL)isValid
 {
+    if (!self.SSN || self.SSN.length != 11) return NO;
+
     NSInteger firstControlDigit, secondControlDigit;
     NSString *ssn = [self.SSN substringToIndex:9];
 
