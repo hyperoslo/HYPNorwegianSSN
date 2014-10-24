@@ -81,4 +81,10 @@ static NSString *HYPBaseSSN = @"01015000232";
     XCTAssert(date, @"Date of birth is an NSDate");
 }
 
+- (void)testAgeDateConversion
+{
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"14028849959"];
+    XCTAssert(([ssn.age isEqualToNumber:@26]), @"Age is %@", [ssn.age stringValue]);
+}
+
 @end
