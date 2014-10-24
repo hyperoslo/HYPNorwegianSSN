@@ -39,12 +39,12 @@ static NSString *HYPBaseSSN = @"01015000232";
 
 - (void)testAgePresence
 {
-    XCTAssert((self.SSN.age > 0), @"Age is higher than zero");
+    XCTAssert(([self.SSN.age integerValue] > 0), @"Age is higher than zero");
 }
 
 - (void)testAgeCalculation
 {
-    XCTAssert((self.SSN.age == 64), @"Age is higher than zero");
+    XCTAssert(([self.SSN.age isEqualToNumber:@64]), @"Age is higher than zero");
 }
 
 - (void)testIfFemale
