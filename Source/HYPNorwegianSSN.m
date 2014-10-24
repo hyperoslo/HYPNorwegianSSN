@@ -8,7 +8,7 @@
 
 #import "HYPNorwegianSSN.h"
 
-NSRange HYPTwentiethCenturyRange = {0, 499};
+NSRange HYPTwentiethCenturyRange = {0, 500};
 NSRange HYPNineteenthCenturyRange = {500, 749-500+1};
 NSRange HYPTwentyFirstCenturyRange = {500, 999-500+1};
 NSRange HYPTwentiethCenturyAlternateRange = {900, 999-900+1};
