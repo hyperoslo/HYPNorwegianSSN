@@ -91,10 +91,6 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 {
     if (!self.SSN || self.SSN.length != 11) return NO;
 
-    if ([self skipValidation]) {
-        return YES;
-    }
-
     NSInteger firstControlDigit, secondControlDigit;
     NSString *ssn = [self.SSN substringToIndex:9];
 
@@ -109,11 +105,16 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     secondControlDigit += [[secondControlWeightNumbers lastObject] integerValue] * firstControlDigit;
     secondControlDigit  = 11 - (secondControlDigit % 11);
 
+    if (secondControlDigit == 11)
+        secondControlDigit = 0;
+
+    BOOL valid = NO;
+
     if (firstControlDigit == self.firstControlNumber && secondControlDigit == self.secondControlNumber) {
-        return YES;
+        valid = YES;
     }
 
-    return NO;
+    return valid;
 }
 
 - (NSString *)dateOfBirthString
@@ -223,14 +224,6 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     }
 
     return SSNDefaultCenturyType;
-}
-
-- (BOOL)skipValidation
-{
-    NSString *subjectA = [self.SSN substringWithRange:NSMakeRange(9,1)];
-    NSString *subjectB = [self.SSN substringWithRange:NSMakeRange(10,1)];
-
-    return ([subjectA isEqualToString:subjectB] && [subjectA isEqualToString:@"0"]);
 }
 
 @end
