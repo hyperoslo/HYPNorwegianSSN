@@ -63,10 +63,10 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     formatter.dateFormat = @"DDMMyyyy";
     NSDate *birthday = [formatter dateFromString:self.dateOfBirthStringWithCentury];
     NSDateComponents *ageComponents = [[NSCalendar currentCalendar]
-                                   components:NSYearCalendarUnit
-                                   fromDate:birthday
-                                   toDate:[NSDate date]
-                                   options:0];
+                                       components:NSYearCalendarUnit
+                                       fromDate:birthday
+                                       toDate:[NSDate date]
+                                       options:0];
     NSUInteger age = ageComponents.year;
 
     return @(age);
@@ -90,6 +90,10 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 - (BOOL)isValid
 {
     if (!self.SSN || self.SSN.length != 11) return NO;
+
+    if ([self skipValidation]) {
+        return YES;
+    }
 
     NSInteger firstControlDigit, secondControlDigit;
     NSString *ssn = [self.SSN substringToIndex:9];
@@ -219,6 +223,14 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     }
 
     return SSNDefaultCenturyType;
+}
+
+- (BOOL)skipValidation
+{
+    NSString *subjectA = [self.SSN substringWithRange:NSMakeRange(9,1)];
+    NSString *subjectB = [self.SSN substringWithRange:NSMakeRange(10,1)];
+
+    return ([subjectA isEqualToString:subjectB] && [subjectA isEqualToString:@"0"]);
 }
 
 @end
