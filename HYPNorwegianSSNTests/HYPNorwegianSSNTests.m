@@ -10,8 +10,6 @@
 #import <XCTest/XCTest.h>
 #import "HYPNorwegianSSN.h"
 
-static NSString *HYPBaseSSN = @"01015000232";
-
 @interface HYPNorwegianSSNTests : XCTestCase
 
 @property (nonatomic, strong) HYPNorwegianSSN *SSN;
@@ -23,8 +21,6 @@ static NSString *HYPBaseSSN = @"01015000232";
 - (void)setUp
 {
     [super setUp];
-
-    self.SSN = [[HYPNorwegianSSN alloc] initWithString:HYPBaseSSN];
 }
 
 - (void)tearDown
@@ -34,49 +30,64 @@ static NSString *HYPBaseSSN = @"01015000232";
 
 - (void)testSSNValidation
 {
-    XCTAssert(self.SSN.valid, @"SSN is valid");
+    XCTAssert([HYPNorwegianSSN validateWithString:@"01015000232"], @"SSN is valid");
 }
 
 - (void)testAgePresence
 {
-    XCTAssert(([self.SSN.age integerValue] > 0), @"Age is higher than zero");
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015000232"];
+
+    XCTAssert(([ssn.age integerValue] > 0), @"Age is higher than zero");
 }
 
 - (void)testAgeCalculation
 {
-    XCTAssert(([self.SSN.age isEqualToNumber:@64]), @"Age is higher than zero");
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015000232"];
+
+    XCTAssert(([ssn.age isEqualToNumber:@64]), @"Age is 64");
 }
 
 - (void)testIfFemale
 {
-    XCTAssert(self.SSN.isFemale, @"Is Female");
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015000232"];
+
+    XCTAssert(ssn.isFemale, @"Is Female");
 }
 
 - (void)testIfMale
 {
-    XCTAssert(!self.SSN.isMale, @"Is not Male");
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015000232"];
+
+    XCTAssert(!ssn.isMale, @"Is not Male");
 }
 
 - (void)testDNumber
 {
-    XCTAssert(!self.SSN.isDNumber, @"Is not D-Number (not a party swede, thank god)");
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015000232"];
+
+    XCTAssert(!ssn.isDNumber, @"Is not D-Number (not a party swede, thank god)");
 }
 
 - (void)testDateOfBirthString
 {
-    XCTAssert([self.SSN.dateOfBirthString isEqualToString:@"010150"], @"Sucessfully extracted date of birth");
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015000232"];
+
+    XCTAssert([ssn.dateOfBirthString isEqualToString:@"010150"], @"Sucessfully extracted date of birth");
 }
 
 - (void)testDateOfBirthStringWithCentury
 {
-    XCTAssert([self.SSN.dateOfBirthStringWithCentury isEqualToString:@"01011950"], @"Sucessfully extracted date of birth");
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015000232"];
+
+    XCTAssert([ssn.dateOfBirthStringWithCentury isEqualToString:@"01011950"], @"Sucessfully extracted date of birth");
 }
 
 - (void)testBirthdate
 {
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015000232"];
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = @"DDMMyyyy";
-    NSDate *date = [formatter dateFromString:self.SSN.dateOfBirthStringWithCentury];
+    NSDate *date = [formatter dateFromString:ssn.dateOfBirthStringWithCentury];
 
     XCTAssert(date, @"Date of birth is an NSDate");
 }
@@ -84,6 +95,7 @@ static NSString *HYPBaseSSN = @"01015000232";
 - (void)testAgeDateConversion
 {
     HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"14028849959"];
+
     XCTAssert(([ssn.age isEqualToNumber:@26]), @"Age is %@", [ssn.age stringValue]);
 }
 
