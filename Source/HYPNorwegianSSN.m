@@ -119,7 +119,10 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSString *)dateOfBirthString
 {
-    NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:[self extractDateOfBirth]];
+    NSString *extractedDateString = [self extractDateOfBirth];
+    if (!extractedDateString) return nil;
+
+    NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:extractedDateString];
 
     if (self.isDNumber) {
         NSString *replacementString = [NSString stringWithFormat:@"%lu", (unsigned long)(self.DNumberValue - 4)];
