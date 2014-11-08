@@ -183,12 +183,12 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSUInteger)DNumberValue
 {
-    return [[self.SSN substringToIndex:1] integerValue];
+    return (self.SSN.length >= 1) ? [[self.SSN substringToIndex:1] integerValue] : 0;
 }
 
 - (NSString *)extractDateOfBirth
 {
-    return [self.SSN substringToIndex:6];
+    return (self.SSN.length >= 6) ? [self.SSN substringToIndex:6] : nil;
 }
 
 - (NSString *)personalNumberString
