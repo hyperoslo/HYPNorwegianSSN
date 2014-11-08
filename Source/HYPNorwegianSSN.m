@@ -193,12 +193,12 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSString *)personalNumberString
 {
-    return [self.SSN substringWithRange:NSMakeRange(6,3)];
+    return (self.SSN.length >= 9) ? [self.SSN substringWithRange:NSMakeRange(6,3)] : nil;
 }
 
 - (NSString *)controlNumberString
 {
-    return [self.SSN substringFromIndex:9];
+    return (self.SSN.length == 11) ? [self.SSN substringFromIndex:9] : nil;
 }
 
 - (NSUInteger)firstControlNumber
