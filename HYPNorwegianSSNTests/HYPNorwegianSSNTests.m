@@ -99,4 +99,11 @@
     XCTAssertEqualObjects(ssn.age, @26);
 }
 
+- (void)testStringRangeSafety
+{
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"11"];
+
+    XCTAssertNil([ssn dateOfBirthString]);
+}
+
 @end
