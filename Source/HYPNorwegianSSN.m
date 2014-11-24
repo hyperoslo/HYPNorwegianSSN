@@ -55,9 +55,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
         NSLog(@"%s:%d -> %@",  __FUNCTION__, __LINE__, @"Unable to calculate age because SSN is not long enough");
     }
 
-    if (!self.dateOfBirthStringWithCentury) {
-        return nil;
-    }
+    if (!self.dateOfBirthStringWithCentury) return nil;
 
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = @"DDMMyyyy";
@@ -67,9 +65,8 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
                                        fromDate:birthday
                                        toDate:[NSDate date]
                                        options:0];
-    NSUInteger age = ageComponents.year;
 
-    return @(age);
+    return @(ageComponents.year);
 }
 
 - (BOOL)isDNumber
@@ -95,26 +92,15 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     NSString *ssn = [self.SSN substringToIndex:9];
 
     firstControlDigit = [self calculateSSN:ssn withWeightNumbers:[HYPNorwegianSSN firstControlWeightNumbers]];
-    firstControlDigit = 11 - (firstControlDigit % 11);
-
-    if (firstControlDigit == 11)
-        firstControlDigit = 0;
+    firstControlDigit = [self modulusEleven:firstControlDigit];
 
     NSArray *secondControlWeightNumbers = [HYPNorwegianSSN secondControlWeightNumbers];
     secondControlDigit  = [self calculateSSN:ssn withWeightNumbers:secondControlWeightNumbers];
     secondControlDigit += [[secondControlWeightNumbers lastObject] integerValue] * firstControlDigit;
-    secondControlDigit  = 11 - (secondControlDigit % 11);
+    secondControlDigit = [self modulusEleven:secondControlDigit];
 
-    if (secondControlDigit == 11)
-        secondControlDigit = 0;
-
-    BOOL valid = NO;
-
-    if (firstControlDigit == self.firstControlNumber && secondControlDigit == self.secondControlNumber) {
-        valid = YES;
-    }
-
-    return valid;
+    return (firstControlDigit == self.firstControlNumber &&
+            secondControlDigit == self.secondControlNumber);
 }
 
 - (NSString *)dateOfBirthString
@@ -135,7 +121,6 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 - (NSString *)dateOfBirthStringWithCentury
 {
     NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:self.dateOfBirthString];
-
     SSNCenturyType century = [self bornInCentury:self.personalNumber];
 
     switch (century) {
@@ -212,6 +197,16 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 - (NSUInteger)secondControlNumber
 {
     return [[self.controlNumberString substringFromIndex:1] integerValue];
+}
+
+- (NSUInteger)modulusEleven:(NSUInteger)controlDigit
+{
+    controlDigit = 11 - (controlDigit % 11);
+
+    if (controlDigit == 11)
+        controlDigit = 0;
+
+    return controlDigit;
 }
 
 - (SSNCenturyType)bornInCentury:(NSUInteger)personalNumber
