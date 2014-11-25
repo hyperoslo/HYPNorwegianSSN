@@ -2,6 +2,8 @@
 //  HYPNorwegianSSN.m
 //  HYPNorwegianSSN
 //
+//  Reference http://www.kith.no/upload/5588/KITH1001-2010_Identifikatorer-for-personer_v1.pdf
+//
 //  Created by Christoffer Winterkvist on 10/5/14.
 //
 //
