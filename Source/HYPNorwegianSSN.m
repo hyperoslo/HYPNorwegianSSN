@@ -56,7 +56,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSNumber *)age
 {
-    if ([self.SSN length] != 11) {
+    if ([self.SSN length] != HYPValidSSNLength) {
         NSLog(@"%s:%d -> %@",  __FUNCTION__, __LINE__, @"Unable to calculate age because SSN is not long enough");
     }
 
@@ -91,7 +91,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (BOOL)isValid
 {
-    if (!self.SSN || self.SSN.length != 11) return NO;
+    if (!self.SSN || self.SSN.length != HYPValidSSNLength) return NO;
 
     NSInteger firstControlDigit, secondControlDigit;
     NSString *ssn = [self.SSN substringToIndex:9];
