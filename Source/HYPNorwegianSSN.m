@@ -15,6 +15,9 @@ NSRange HYPNineteenthCenturyRange = {500, 749-500+1};
 NSRange HYPTwentyFirstCenturyRange = {500, 999-500+1};
 NSRange HYPTwentiethCenturyAlternateRange = {900, 999-900+1};
 
+NSUInteger HYPValidSSNLength = 11;
+NSUInteger HYPValidSSNControlNumber = 11;
+
 typedef NS_ENUM(NSInteger, SSNCenturyType) {
     SSNDefaultCenturyType = 0,
     SSNNineteenthCenturyType,
@@ -188,7 +191,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSString *)controlNumberString
 {
-    return (self.SSN.length == 11) ? [self.SSN substringFromIndex:9] : nil;
+    return (self.SSN.length == HYPValidSSNLength) ? [self.SSN substringFromIndex:9] : nil;
 }
 
 - (NSUInteger)firstControlNumber
