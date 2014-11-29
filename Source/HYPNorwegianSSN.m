@@ -203,12 +203,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSUInteger)modulusEleven:(NSUInteger)controlDigit
 {
-    controlDigit = 11 - (controlDigit % 11);
-
-    if (controlDigit == 11)
-        controlDigit = 0;
-
-    return controlDigit;
+    return controlDigit = 11 - (controlDigit % 11);
 }
 
 - (SSNCenturyType)bornInCentury:(NSUInteger)personalNumber
