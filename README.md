@@ -12,6 +12,12 @@ if (ssn.isValid) {
     [self gainInterest:YES];
 }
 
+// Or the shorthand version
+
+if ([HYPNorwegianSSN validateWithString:@"xxxxxxxxxxx"]) {
+    NSLog(@"Yeap, this is valid alright, tell me more about this so called person.");
+}
+
 if (ssn.isDNumber) {
     NSLog(@"OMG! A potential swede");
     [self runAndHide];
