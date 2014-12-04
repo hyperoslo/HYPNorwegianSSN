@@ -1,13 +1,3 @@
-//
-//  HYPNorwegianSSN.m
-//  HYPNorwegianSSN
-//
-//  Reference http://www.kith.no/upload/5588/KITH1001-2010_Identifikatorer-for-personer_v1.pdf
-//
-//  Created by Christoffer Winterkvist on 10/5/14.
-//
-//
-
 #import "HYPNorwegianSSN.h"
 
 NSRange HYPTwentiethCenturyRange = {0, 500};
@@ -40,6 +30,8 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 + (BOOL)validateWithString:(NSString *)string
 {
+    if (!string) return NO;
+
     HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:string];
     return ssn.isValid;
 }
@@ -125,6 +117,8 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSString *)dateOfBirthStringWithCentury
 {
+    if (!self.dateOfBirthString) return nil;
+
     NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:self.dateOfBirthString];
     SSNCenturyType century = [self bornInCentury:self.personalNumber];
 

@@ -1,13 +1,5 @@
-//
-//  HYPNorwegianSSNTests.m
-//  HYPNorwegianSSNTests
-//
-//  Created by Christoffer Winterkvist on 10/5/14.
-//
-//
-
-#import <Cocoa/Cocoa.h>
-#import <XCTest/XCTest.h>
+@import Cocoa;
+@import XCTest;
 #import "HYPNorwegianSSN.h"
 
 @interface HYPNorwegianSSNTests : XCTestCase
