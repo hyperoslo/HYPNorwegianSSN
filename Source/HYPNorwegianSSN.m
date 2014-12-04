@@ -206,7 +206,9 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSUInteger)modulusEleven:(NSUInteger)controlDigit
 {
-    return 11 - (controlDigit % 11);
+    controlDigit = 11 - (controlDigit % 11);
+
+    return (controlDigit == 11) ? 0 : controlDigit;
 }
 
 - (SSNCenturyType)bornInCentury:(NSUInteger)personalNumber
