@@ -1,10 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "HYPNorwegianSSN"
-<<<<<<< HEAD
-  s.version = "1.7.1"
-=======
-  s.version = "1.8"
->>>>>>> master
+  s.version = "1.8.1"
   s.summary = "A convenient way of validating and extracting info from a Norwegian Social Security Number"
   s.description = <<-DESC
                    * A convenient way of validating and extracting info from a Norwegian Social Security Number
