@@ -78,10 +78,14 @@
 {
     HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015000232"];
     NSDateFormatter *formatter = [NSDateFormatter new];
-    formatter.dateFormat = @"DDMMyyyy";
+    formatter.dateFormat = @"ddMMyyyy";
     NSDate *date = [formatter dateFromString:ssn.dateOfBirthStringWithCentury];
 
     XCTAssertNotNil(date);
+
+    NSDate *expectedDate = [formatter dateFromString:@"01011950"];
+
+    XCTAssertEqualObjects(date, expectedDate);
 }
 
 - (void)testAgeDateConversion
@@ -94,6 +98,8 @@
 - (void)testStringRangeSafety
 {
     HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"11"];
+
+    XCTAssertFalse(ssn.isValid);
 
     XCTAssertNil([ssn dateOfBirthString]);
 }
