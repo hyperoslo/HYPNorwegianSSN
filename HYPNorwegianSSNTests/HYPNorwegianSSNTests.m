@@ -83,7 +83,7 @@
 
     XCTAssertNotNil(date);
 
-    NSDate *expectedDate = [formatter dateFromString:ssn.dateOfBirthStringWithCentury];
+    NSDate *expectedDate = [formatter dateFromString:@"01011950"];
 
     XCTAssertEqualObjects(date, expectedDate);
 }
