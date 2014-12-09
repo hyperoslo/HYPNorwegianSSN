@@ -99,6 +99,8 @@
 {
     HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"11"];
 
+    XCTAssertFalse(ssn.isValid);
+
     XCTAssertNil([ssn dateOfBirthString]);
 }
 
