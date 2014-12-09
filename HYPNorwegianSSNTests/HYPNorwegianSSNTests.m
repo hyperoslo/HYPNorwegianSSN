@@ -82,6 +82,10 @@
     NSDate *date = [formatter dateFromString:ssn.dateOfBirthStringWithCentury];
 
     XCTAssertNotNil(date);
+
+    NSDate *expectedDate = [formatter dateFromString:ssn.dateOfBirthStringWithCentury];
+
+    XCTAssertEqualObjects(date, expectedDate);
 }
 
 - (void)testAgeDateConversion
