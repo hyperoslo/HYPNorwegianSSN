@@ -78,7 +78,7 @@
 {
     HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015000232"];
     NSDateFormatter *formatter = [NSDateFormatter new];
-    formatter.dateFormat = @"DDMMyyyy";
+    formatter.dateFormat = @"ddMMyyyy";
     NSDate *date = [formatter dateFromString:ssn.dateOfBirthStringWithCentury];
 
     XCTAssertNotNil(date);
