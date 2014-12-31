@@ -10,7 +10,6 @@
 		BD37E0B719E6BF0400E45BB4 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = BD37E0A919E6BF0400E45BB4 /* .travis.yml */; };
 		BD90227619E1B91B007967E6 /* HYPNorwegianSSNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD90227519E1B91B007967E6 /* HYPNorwegianSSNTests.m */; };
 		BD90227D19E1B95D007967E6 /* HYPNorwegianSSN.m in Sources */ = {isa = PBXBuildFile; fileRef = BD90227C19E1B95D007967E6 /* HYPNorwegianSSN.m */; };
-		BDE1B5C719E9367500BE39EA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = BDE1B5C519E9367500BE39EA /* README.md */; };
 		BDE1B5C819E9367500BE39EA /* HYPNorwegianSSN.podspec in Resources */ = {isa = PBXBuildFile; fileRef = BDE1B5C619E9367500BE39EA /* HYPNorwegianSSN.podspec */; };
 /* End PBXBuildFile section */
 
@@ -149,7 +148,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDE1B5C719E9367500BE39EA /* README.md in Sources */,
 				BD90227619E1B91B007967E6 /* HYPNorwegianSSNTests.m in Sources */,
 				BD90227D19E1B95D007967E6 /* HYPNorwegianSSN.m in Sources */,
 			);
