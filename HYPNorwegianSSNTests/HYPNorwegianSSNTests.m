@@ -36,7 +36,7 @@
 {
     HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015000232"];
 
-    XCTAssertEqualObjects(ssn.age, @64);
+    XCTAssertEqualObjects(ssn.age, @65);
 }
 
 - (void)testIfFemale

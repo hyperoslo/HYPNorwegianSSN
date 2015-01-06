@@ -1,9 +1,9 @@
 #import "HYPNorwegianSSN.h"
 
 NSRange HYPTwentiethCenturyRange = {0, 500};
-NSRange HYPNineteenthCenturyRange = {500, 749-500+1};
-NSRange HYPTwentyFirstCenturyRange = {500, 999-500+1};
-NSRange HYPTwentiethCenturyAlternateRange = {900, 999-900+1};
+NSRange HYPNineteenthCenturyRange = {500, 749-501};
+NSRange HYPTwentyFirstCenturyRange = {500, 999-501};
+NSRange HYPTwentiethCenturyAlternateRange = {900, 999-901};
 
 NSUInteger HYPValidSSNLength = 11;
 NSUInteger HYPValidSSNControlNumber = 11;
@@ -178,6 +178,11 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     return (self.SSN.length >= 6) ? [self.SSN substringToIndex:6] : nil;
 }
 
+- (NSString *)yearString
+{
+    return (self.SSN.length >= 11) ? [self.SSN substringWithRange:NSMakeRange(4, 2)] : nil;
+}
+
 - (NSString *)personalNumberString
 {
     return (self.SSN.length >= 9) ? [self.SSN substringWithRange:NSMakeRange(6,3)] : nil;
@@ -207,13 +212,18 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (SSNCenturyType)bornInCentury:(NSUInteger)personalNumber
 {
+    NSUInteger year = [[self yearString] integerValue];
+
     if (NSLocationInRange(personalNumber, HYPTwentiethCenturyRange)) {
         return SSNTwentiethCenturyType;
-    } else if (NSLocationInRange(personalNumber, HYPNineteenthCenturyRange)) {
+    } else if (NSLocationInRange(personalNumber, HYPNineteenthCenturyRange) &&
+               (year >= 54 && year <= 99)) {
         return SSNNineteenthCenturyType;
-    } else if (NSLocationInRange(personalNumber, HYPTwentyFirstCenturyRange)) {
+    } else if (NSLocationInRange(personalNumber, HYPTwentyFirstCenturyRange) &&
+               year <= 39) {
         return SSNTwentyFirstCenturyType;
-    } else if (NSLocationInRange(personalNumber, HYPTwentiethCenturyAlternateRange)) {
+    } else if (NSLocationInRange(personalNumber, HYPTwentiethCenturyAlternateRange) &&
+               (year >= 40 && year <= 99)) {
         return SSNTwentiethCenturyAlternateType;
     }
 
