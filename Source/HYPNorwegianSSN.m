@@ -50,6 +50,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 {
     if ([self.SSN length] != HYPValidSSNLength) {
         NSLog(@"%s:%d -> %@",  __FUNCTION__, __LINE__, @"Unable to calculate age because SSN is not long enough");
+        return nil;
     }
 
     if (!self.dateOfBirthStringWithCentury) return nil;
