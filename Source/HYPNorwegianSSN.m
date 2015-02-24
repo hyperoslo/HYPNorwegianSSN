@@ -147,7 +147,10 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     formatter.dateFormat = @"ddMMyyyy";
     NSDate *date = [formatter dateFromString:self.dateOfBirthStringWithCentury];
 
-    return date;
+    NSTimeZone *timezone = [NSTimeZone localTimeZone];
+    NSInteger seconds = [timezone secondsFromGMTForDate:date];
+
+    return [NSDate dateWithTimeInterval:seconds sinceDate:date];
 }
 
 #pragma mark - Private methods
