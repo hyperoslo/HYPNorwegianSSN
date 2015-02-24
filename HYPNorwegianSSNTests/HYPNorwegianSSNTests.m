@@ -90,7 +90,7 @@
 
 - (void)testAgeDateConversion
 {
-    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"14028949959"];
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"14028949546"];
 
     // This guy's birthday is on Valentines day. So remember to give your
     // significant other a rose, and tell this guy happy birthday.
