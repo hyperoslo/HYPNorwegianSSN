@@ -112,7 +112,7 @@
     XCTAssertEqualObjects(ssn.dateOfBirthStringWithCentury, @"01011901");
 }
 
-- (void)testSSNInTwentyFirstCenturyAtEndOfRange {
+- (void)testSSNInTwentyFirstCentury {
     HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01030099911"];
 
     XCTAssertTrue(ssn.isValid);
