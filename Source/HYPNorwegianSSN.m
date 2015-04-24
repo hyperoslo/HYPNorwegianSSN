@@ -1,9 +1,9 @@
 #import "HYPNorwegianSSN.h"
 
 NSRange HYPTwentiethCenturyRange = {0, 500};
-NSRange HYPNineteenthCenturyRange = {500, 749-501};
-NSRange HYPTwentyFirstCenturyRange = {500, 999-501};
-NSRange HYPTwentiethCenturyAlternateRange = {900, 999-901};
+NSRange HYPNineteenthCenturyRange = {500, 749-499};
+NSRange HYPTwentyFirstCenturyRange = {500, 999-499};
+NSRange HYPTwentiethCenturyAlternateRange = {900, 100};
 
 NSUInteger HYPValidSSNLength = 11;
 NSUInteger HYPValidSSNControlNumber = 11;

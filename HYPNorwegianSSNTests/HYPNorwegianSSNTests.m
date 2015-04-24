@@ -107,4 +107,26 @@
     XCTAssertNil([ssn dateOfBirthString]);
 }
 
+- (void)testSSNNineteenthCenturyRange {
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01015574883"];
+    XCTAssertEqualObjects(ssn.dateOfBirthStringWithCentury, @"01011855");
+}
+
+- (void)testSSNTwentiethCentury {
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01010135369"];
+    XCTAssertEqualObjects(ssn.dateOfBirthStringWithCentury, @"01011901");
+}
+
+- (void)testSSNInTwentyFirstCentury {
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01030099911"];
+
+    XCTAssertTrue(ssn.isValid);
+    XCTAssertEqualObjects(ssn.dateOfBirthStringWithCentury, @"01032000");
+}
+
+- (void)testSSNInTwentyFirstCenturyAlternateRange {
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01014599939"];
+    XCTAssertEqualObjects(ssn.dateOfBirthStringWithCentury, @"01011945");
+}
+
 @end
