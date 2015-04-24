@@ -111,7 +111,7 @@
     HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"01030099911"];
 
     XCTAssertTrue(ssn.isValid);
-    XCTAssertEqualObjects(ssn.age, @15);
+    XCTAssertEqualObjects(ssn.dateOfBirthStringWithCentury, @"01302000");
 }
 
 @end
