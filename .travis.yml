@@ -1,3 +1,2 @@
 language: objective-c
-xcode_project: HYPNorwegianSSN.xcodeproj
-xcode_scheme: HYPNorwegianSSNTests
+script: xctool -project HYPNorwegianSSN.xcodeproj -scheme HYPNorwegianSSNTests -sdk iphonesimulator build test
